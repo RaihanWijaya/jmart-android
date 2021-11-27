@@ -8,7 +8,7 @@
     tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/InputEmailRegister"
+        android:id="@+id/emailRegister"
         android:layout_width="210dp"
         android:layout_height="48dp"
         android:layout_marginStart="100dp"
@@ -19,14 +19,14 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/InputPasswordRegister"
+        app:layout_constraintBottom_toTopOf="@+id/passwordRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InputNameRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/nameRegister" />
 
     <EditText
-        android:id="@+id/InputPasswordRegister"
+        android:id="@+id/passwordRegister"
         android:layout_width="210dp"
         android:layout_height="48dp"
         android:layout_marginStart="100dp"
@@ -36,13 +36,13 @@
         android:hint="Password"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/ButtonRegister"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/InputNameRegister"
+        android:id="@+id/nameRegister"
         android:layout_width="210dp"
         android:layout_height="48dp"
         android:layout_marginStart="100dp"
@@ -58,7 +58,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/ButtonRegister"
+        android:id="@+id/buttonRegister"
         android:layout_width="184dp"
         android:layout_height="58dp"
         android:layout_marginStart="158dp"
