@@ -15,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView helloUser = findViewById(R.id.helloUser);
 
-        helloUser.setText("Welcome" + LoginActivity.getLoggedAccount().name);
+        helloUser.setText("Selamat datang " + LoginActivity.getLoggedAccount().name);
     }
 }

@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.MuhammadRaihanWijayaJmartMR.jmart_android.model.Account;
 import com.MuhammadRaihanWijayaJmartMR.jmart_android.request.RegisterRequest;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,55 +19,43 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
+    private static final Gson gson = new Gson();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        EditText nameRegister = findViewById(R.id.nameRegister);
-        EditText emailRegister = findViewById(R.id.emailRegister);
-        EditText passwordRegister = findViewById(R.id.passwordRegister);
+        EditText textName = findViewById(R.id.nameRegister);
+        EditText textEmail = findViewById(R.id.emailRegister);
+        EditText textPassword = findViewById(R.id.passwordRegister);
         Button buttonRegister = findViewById(R.id.buttonRegister);
 
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Response.Listener<String> listener = new Response.Listener<String>() {
-
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject object = new JSONObject(response);
                             if(object != null){
-                                Toast.makeText
-                                        (
-                                                RegisterActivity.this,
-                                                "Terima Kasih Sudah Melakukan Registrasi!",
-                                                Toast.LENGTH_SHORT
-                                        );
+                                Toast.makeText(RegisterActivity.this, "Register Success!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }
                         }
-
-                        catch (JSONException e) {
+                        catch (JSONException e){
                             e.printStackTrace();
+                            Toast.makeText(RegisterActivity.this, "Register Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
-
-                RegisterRequest registerRequest = new RegisterRequest
-                        (
-                                nameRegister.getText().toString(),
-                                emailRegister.getText().toString(),
-                                passwordRegister.getText().toString(),
-                                listener,
-                                null
-                        );
-
+                RegisterRequest registerRequest = new RegisterRequest(textName.getText().toString(), textEmail.getText().toString(), textPassword.getText().toString(), listener, null);
                 RequestQueue requestQueue = Volley.newRequestQueue(RegisterActivity.this);
                 requestQueue.add(registerRequest);
             }
         });
+
     }
 }

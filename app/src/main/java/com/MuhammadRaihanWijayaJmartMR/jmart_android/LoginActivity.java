@@ -33,56 +33,39 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        EditText emailLogin = findViewById(R.id.emailLogin);
-        EditText passwordLogin = findViewById(R.id.passwordLogin);
-        Button buttonLogin = findViewById(R.id.buttonLogin);
-        TextView textToRegister = findViewById(R.id.textToRegister);
-
-        textToRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-
+        EditText textemail = findViewById(R.id.emailLogin);
+        EditText textpassword = findViewById(R.id.passwordLogin);
+        Button buttonlogin = findViewById(R.id.buttonLogin);
+        buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Response.Listener<String> listener = new Response.Listener<String>() {
-
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject object = new JSONObject(response);
-                            Toast.makeText
-                                    (
-                                            LoginActivity.this,
-                                            "Selamat Datang ke Aplikasi!",
-                                            Toast.LENGTH_SHORT
-                                    );
+                            Toast.makeText(LoginActivity.this, "Login Success!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             loggedAccount = gson.fromJson(object.toString(), Account.class);
                             startActivity(intent);
                         }
-
-                        catch (JSONException e) {
+                        catch (JSONException e){
                             e.printStackTrace();
+                            Toast.makeText(LoginActivity.this, "Login Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 };
-
-                LoginRequest loginRequest = new LoginRequest
-                        (
-                                emailLogin.getText().toString(),
-                                passwordLogin.getText().toString(),
-                                listener,
-                                null
-                        );
-
+                LoginRequest loginRequest = new LoginRequest(textemail.getText().toString(), textpassword.getText().toString(), listener, null);
                 RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
                 requestQueue.add(loginRequest);
+            }
+        });
+        TextView register = findViewById(R.id.textToRegister);
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }
