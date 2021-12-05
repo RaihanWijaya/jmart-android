@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateProductActivity">
+    tools:context=".CreateProductActivity"
+    android:background="#c3baff">
 
     <LinearLayout
         android:layout_width="391dp"
@@ -15,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#c3baff">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -24,7 +26,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="581dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="#c3baff">
 
                 <TextView
                     android:id="@+id/textView"
