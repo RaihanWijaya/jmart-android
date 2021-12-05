@@ -1,5 +1,5 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.model;
 
 public class Serializable {
-    public final int id = -1;
+    private final int id = -1;
 }
