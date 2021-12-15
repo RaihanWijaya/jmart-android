@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.model;
 
+/**
+ * The class Product extends serializable
+ * @author Raihan Wijaya
+ * @description Untuk menyimpan variabel Product
+ */
+
 public class Product extends Serializable {
     public int accountId;
     public ProductCategory category;
@@ -10,7 +16,8 @@ public class Product extends Serializable {
     public byte shipmentPlans;
     public int weight;
 
-    public String toString(){
+    @Override
+    public String toString() {
         return this.name;
     }
 }

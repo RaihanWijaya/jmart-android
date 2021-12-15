@@ -1,45 +1,64 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
+/**
+ * The class AboutMeActivity extends AppCompatActivity
+ * @author Raihan Wijaya
+ * @description konfigurassi kode dari front-end AboutMeActivity, disini user bisa top-up dan melakukan registrasi toko baru
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.MuhammadRaihanWijayaJmartMR.jmart_android.model.Store;
+import com.MuhammadRaihanWijayaJmartMR.jmart_android.request.RegisterStoreRequest;
+import com.MuhammadRaihanWijayaJmartMR.jmart_android.request.TopUpRequest;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Objects;
 
 public class AboutMeActivity extends AppCompatActivity {
+    private static final Gson gson = new Gson();
+    private static Store storeAccount = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_about_me);
 
-        TextView name = (TextView) findViewById(R.id.outputNameAbout);
+        TextView name = findViewById(R.id.outputNameAbout);
         name.setText("" + LoginActivity.getLoggedAccount().name);
-        TextView email = (TextView) findViewById(R.id.outputEmailAbout);
+        TextView email = findViewById(R.id.outputEmailAbout);
         email.setText("" + LoginActivity.getLoggedAccount().email);
-        TextView balance = (TextView) findViewById(R.id.outputBalanceAbout);
+        TextView balance = findViewById(R.id.outputBalanceAbout);
         balance.setText("" + LoginActivity.getLoggedAccount().balance);
 
-        EditText topUpInput = (EditText) findViewById(R.id.topupInputAbout);
+        EditText topUpInput =  findViewById(R.id.topupInputAbout);
+        EditText storeName =  findViewById(R.id.inputNameRegisterStore);
+        EditText storeAddress =  findViewById(R.id.inputAddressRegisterStore);
+        EditText storePhone =  findViewById(R.id.inputPhoneRegisterStore);
 
-        Button buttonTopUp = (Button) findViewById(R.id.topupButtonAbout);
-        Button registerButton = (Button) findViewById(R.id.registerStoreButtonAbout);
-        Button registerStore = (Button) findViewById(R.id.buttonRegisterStore);
-        Button cancelRegister = (Button) findViewById(R.id.cancelRegisterStore);
+        Button buttonTopUp = findViewById(R.id.topupButtonAbout);
+        Button registerButton = findViewById(R.id.registerStoreButtonAbout);
+        Button registerStore = findViewById(R.id.buttonRegisterStore);
+        Button cancelRegister = findViewById(R.id.cancelRegisterStore);
 
-        CardView cardRegister = (CardView) findViewById(R.id.cardRegisterAbout);
-        CardView cardStore = (CardView) findViewById(R.id.cardStoreAbout);
+        CardView cardRegister = findViewById(R.id.cardRegisterAbout);
+        CardView cardStore = findViewById(R.id.cardStoreAbout);
 
         registerButton.setVisibility(View.GONE);
         cardRegister.setVisibility(View.GONE);
@@ -48,18 +67,37 @@ public class AboutMeActivity extends AppCompatActivity {
         if (LoginActivity.getLoggedAccount().store == null){
             registerButton.setVisibility(View.VISIBLE);
         }
-        else if (LoginActivity.getLoggedAccount().store != null){
-            TextView dataName = (TextView) findViewById(R.id.dataNameTextAbout);
+        else {
+            TextView dataName = findViewById(R.id.dataNameTextAbout);
             dataName.setText("" + LoginActivity.getLoggedAccount().store.name);
-            TextView dataAddress = (TextView) findViewById(R.id.dataAddressTextAbout);
+            TextView dataAddress = findViewById(R.id.dataAddressTextAbout);
             dataAddress.setText("" + LoginActivity.getLoggedAccount().store.address);
-            TextView dataPhone = (TextView) findViewById(R.id.dataPhoneTextAbout);
+            TextView dataPhone = findViewById(R.id.dataPhoneTextAbout);
             dataPhone.setText("" + LoginActivity.getLoggedAccount().store.phoneNumber);
             cardStore.setVisibility(View.VISIBLE);
         }
-        else{
-            registerButton.setVisibility(View.VISIBLE);
-        }
+
+        buttonTopUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Response.Listener<String> listener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if(Boolean.parseBoolean(response)){
+                            Toast.makeText(AboutMeActivity.this, "Topup berhasil", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(AboutMeActivity.this, "Topup error!", Toast.LENGTH_SHORT).show();
+                        }
+                        LoginActivity.loggedAccount.balance += Double.parseDouble(topUpInput.getText().toString());
+                        finish();
+                        startActivity(getIntent());
+                    }
+                };
+                TopUpRequest topUpRequest = new TopUpRequest(LoginActivity.getLoggedAccount().id, Double.parseDouble(topUpInput.getText().toString()), listener, null);
+                RequestQueue requestQueue = Volley.newRequestQueue(AboutMeActivity.this);
+                requestQueue.add(topUpRequest);
+            }
+        });
 
         registerButton.setOnClickListener (new View.OnClickListener() {
             @Override
@@ -73,6 +111,41 @@ public class AboutMeActivity extends AppCompatActivity {
                         registerButton.setVisibility(View.VISIBLE);
                     }
                 });
+            }
+        });
+
+        registerStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Response.Listener<String> listener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            JSONObject object = new JSONObject(response);
+                            LoginActivity.loggedAccount.store = gson.fromJson(object.toString(),Store.class);
+                            System.out.println(LoginActivity.loggedAccount.store);
+                            Toast.makeText(AboutMeActivity.this, "Create Store Success!", Toast.LENGTH_SHORT).show();
+                            finish();
+                            startActivity(getIntent());
+                        }catch (JSONException e){
+                            Toast.makeText(AboutMeActivity.this, "Create Store Failed!", Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
+                    }
+                };
+                RegisterStoreRequest request = new RegisterStoreRequest(LoginActivity.getLoggedAccount().id,storeName.getText().toString(),storeAddress.getText().toString(),storePhone.getText().toString(),listener,null);
+                RequestQueue requestQueue = Volley.newRequestQueue(AboutMeActivity.this);
+                requestQueue.add(request);
+            }
+        });
+
+        Button history = findViewById(R.id.historyAbout);
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AboutMeActivity.this, StoreInvoiceActivity.class);
+                startActivity(intent);
             }
         });
     }

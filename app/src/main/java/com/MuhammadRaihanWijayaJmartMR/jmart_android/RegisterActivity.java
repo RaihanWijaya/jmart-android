@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
+/**
+ * The class RegisterActivity extends AppCompatActivity
+ * @author Raihan Wijaya
+ * @description Disini merupakan activity untuk tampilan register dan menghubungkan ke RegisterRequest
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

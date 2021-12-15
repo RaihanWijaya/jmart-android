@@ -3,60 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductFragment"
-    android:background="#c3baff">
+    tools:context=".ProductFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/lightest_pumpkin"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="46dp"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_bluegreen"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/buttonPrev"
+                android:id="@+id/ButtonPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
-                android:text="PREV" />
+                android:text="prev" />
 
             <Button
-                android:id="@+id/buttonNext"
+                android:id="@+id/ButtonNext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
-                android:text="NEXT" />
+                android:text="Next" />
 
             <EditText
-                android:id="@+id/inputPage"
-                android:layout_width="97dp"
+                android:id="@+id/InputPageProduct"
+                android:layout_width="128dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="page"
-                android:inputType="textPersonName"
-                android:autofillHints="" />
+                android:inputType="number"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:id="@+id/buttonGo"
+                android:id="@+id/ButtonGo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
-                android:text="GO" />
+                android:text="go" />
+
         </LinearLayout>
 
         <ListView
-            android:id="@+id/listView"
+            android:id="@+id/ProductListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:entries="@array/productCategory" />
+            android:layout_height="689dp"
+            android:layout_weight="1" />
 
     </LinearLayout>
+
 </FrameLayout>

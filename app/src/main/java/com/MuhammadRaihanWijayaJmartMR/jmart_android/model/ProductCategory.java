@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.model;
 
+/**
+ * The enum class ProductCategory
+ * @author Raihan Wijaya
+ * @description Untuk enum dari ProductCategory
+ */
+
 public enum ProductCategory
 {
     BOOK,

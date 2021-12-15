@@ -1,6 +1,12 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.model;
 
-public class Account {
+/**
+ * The class Account extends serializable
+ * @author Raihan Wijaya
+ * @description Untuk menyimpan variabel Account
+ */
+
+public class Account extends Serializable{
     public double balance;
     public String email;
     public String name;

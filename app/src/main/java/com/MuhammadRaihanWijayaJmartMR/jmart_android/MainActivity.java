@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
+/**
+ * The class MainActivity extends AppCompatActivity
+ * @author Raihan Wijaya
+ * @description Disini merupakan MainActivity yang berisi menu utama dan VPAdapter untuk pindah fragment
+ */
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -10,6 +16,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_menu, menu);
+        MenuItem addButton = menu.findItem(R.id.add_button);
+        addButton.setVisible(LoginActivity.getLoggedAccount().store != null);
         return true;
     }
 
@@ -49,13 +59,18 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
         }
         if (item.getItemId() == R.id.add_button) {
-            Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Add Product Selected", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, CreateProductActivity.class);
             startActivity(intent);
         }
         if (item.getItemId() == R.id.account_button) {
             Toast.makeText(this, "Account Selected", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, AboutMeActivity.class);
+            startActivity(intent);
+        }
+        if (item.getItemId() == R.id.history_button) {
+            Toast.makeText(this, "History Selected", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, PersonalHistory.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

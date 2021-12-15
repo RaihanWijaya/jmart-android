@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.request;
 
+/**
+ * The class LoginRequest extends StringRequest
+ * @author Raihan Wijaya
+ * @description Untuk membuat request ke backend ketika user mencoba untuk melakukan login
+ */
+
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import java.util.HashMap;

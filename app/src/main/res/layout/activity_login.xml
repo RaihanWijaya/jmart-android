@@ -5,8 +5,8 @@
     android:id="@+id/Login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="#c3baff">
+    android:background="@color/lightest_pumpkin"
+    tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/emailLogin"
@@ -18,6 +18,10 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
+        android:textColor="#1D3557"
+        android:textColorHighlight="#1D3557"
+        android:textColorHint="#1D3557"
+        android:textColorLink="#1D3557"
         app:layout_constraintBottom_toTopOf="@+id/passwordLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -33,6 +37,8 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textColorHint="#1D3557"
+        android:textColorLink="#1D3557"
         app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -41,20 +47,22 @@
 
     <Button
         android:id="@+id/buttonLogin"
-        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="94dp"
         android:layout_height="48dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
-        android:background="#6E6E6E"
-        android:backgroundTint="#737373"
+        android:background="#E63946"
+        android:backgroundTint="#E63946"
+        android:shadowColor="@color/dark_bluegreen"
         android:text="LOGIN"
-        app:iconTint="#686868"
+        app:iconTint="#E63946"
         app:layout_constraintBottom_toTopOf="@+id/textToRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin"
+        app:rippleColor="@color/dark_bluegreen" />
 
     <TextView
         android:id="@+id/textToRegister"
@@ -63,6 +71,8 @@
         android:layout_marginTop="100dp"
         android:text="Don't Have Account?\nRegister Now!"
         android:textAlignment="center"
+        android:textColor="#1D3557"
+        android:textColorLink="#1D3557"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
+/**
+ * The class LoginActivity extends AppCompatActivity
+ * @author Raihan Wijaya
+ * @description Disini merupakan activity yang digunakan untuk mengatur login, disini akan menggunakan Class LoginRequest
+ */
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,7 +28,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
     private static final Gson gson = new Gson();
-    private static Account loggedAccount;
+    public static Account loggedAccount;
 
     public static Account getLoggedAccount(){
         return loggedAccount;

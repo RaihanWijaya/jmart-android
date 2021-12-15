@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutMeActivity"
-    android:background="#FF6200EE">
+    android:background="@color/dark_bluegreen"
+    tools:context=".AboutMeActivity">
 
     <LinearLayout
         android:layout_width="394dp"
         android:layout_height="739dp"
         android:layout_marginTop="100dp"
+        android:background="@color/lightest_pumpkin"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#c3baff">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/titleTextAbout"
@@ -26,6 +26,8 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginVertical="10dp"
             android:text="Account Details"
+            android:textColor="@color/dark_bluegreen"
+            android:textColorHint="@color/dark_bluegreen"
             android:textSize="24dp" />
 
         <LinearLayout
@@ -47,6 +49,8 @@
                     android:layout_marginHorizontal="5dp"
                     android:layout_marginVertical="5dp"
                     android:text="Name"
+                    android:textColor="@color/dark_bluegreen"
+                    android:textColorHint="@color/dark_bluegreen"
                     android:textSize="16sp" />
 
                 <TextView
@@ -57,6 +61,7 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:textAlignment="textEnd"
+                    android:textColor="@color/dark_bluegreen"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -72,6 +77,8 @@
                     android:layout_marginHorizontal="5dp"
                     android:layout_marginVertical="5dp"
                     android:text="Email"
+                    android:textColor="@color/dark_bluegreen"
+                    android:textColorHint="@color/dark_bluegreen"
                     android:textSize="16sp" />
 
                 <TextView
@@ -82,6 +89,7 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:textAlignment="textEnd"
+                    android:textColor="@color/dark_bluegreen"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -98,6 +106,8 @@
                     android:layout_marginHorizontal="5dp"
                     android:layout_marginVertical="5dp"
                     android:text="Balance"
+                    android:textColor="@color/dark_bluegreen"
+                    android:textColorHint="@color/dark_bluegreen"
                     android:textSize="16sp" />
 
                 <TextView
@@ -108,6 +118,7 @@
                     android:layout_marginVertical="5dp"
                     android:layout_weight="1"
                     android:textAlignment="viewEnd"
+                    android:textColor="@color/dark_bluegreen"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -126,10 +137,12 @@
                 android:layout_marginVertical="5dp"
                 android:layout_weight="1"
                 android:ems="10"
-                android:hint="Top-Up Amount"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:minHeight="48dp"
-                android:textSize="16sp" />
+                android:text="0"
+                android:textColor="@color/dark_bluegreen"
+                android:textSize="16sp"
+                tools:text="0" />
 
             <Button
                 android:id="@+id/topupButtonAbout"
@@ -144,6 +157,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/lightest_pumpkin"
             android:orientation="vertical">
 
             <Button
@@ -158,13 +172,14 @@
                 android:id="@+id/cardRegisterAbout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#9c9fff">
+                android:background="#9c9fff"
+                app:cardBackgroundColor="@color/lightest_pumpkin">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#c3baff">
+                    android:background="@color/lightest_pumpkin"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/registerStoreTextAbout"
@@ -172,7 +187,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
-                        android:text="Register Store" />
+                        android:text="Register Store"
+                        android:textColor="@color/dark_bluegreen"
+                        android:textColorHint="@color/dark_bluegreen" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -188,7 +205,8 @@
                             android:ems="10"
                             android:hint="Name"
                             android:inputType="textPersonName"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:textColor="@color/dark_bluegreen" />
 
                         <EditText
                             android:id="@+id/inputAddressRegisterStore"
@@ -199,7 +217,8 @@
                             android:ems="10"
                             android:hint="Address"
                             android:inputType="textPersonName"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:textColor="@color/dark_bluegreen" />
 
                         <EditText
                             android:id="@+id/inputPhoneRegisterStore"
@@ -210,7 +229,8 @@
                             android:ems="10"
                             android:hint="Phone Number"
                             android:inputType="textPersonName"
-                            android:minHeight="48dp" />
+                            android:minHeight="48dp"
+                            android:textColor="@color/dark_bluegreen" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -245,13 +265,14 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardStoreAbout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/lightest_pumpkin">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:background="#c3baff">
+                    android:background="@color/lightest_pumpkin"
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/storeInfoTextAbout"
@@ -259,7 +280,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp"
-                        android:text="Store" />
+                        android:text="Store"
+                        android:textColor="@color/dark_bluegreen"
+                        android:textColorHint="@color/dark_bluegreen" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -272,7 +295,9 @@
                             android:layout_height="match_parent"
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginVertical="5dp"
-                            android:text="Name" />
+                            android:text="Name"
+                            android:textColor="@color/dark_bluegreen"
+                            android:textColorHint="@color/dark_bluegreen" />
 
                         <TextView
                             android:id="@+id/dataNameTextAbout"
@@ -281,7 +306,8 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginVertical="5dp"
                             android:layout_weight="1"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/dark_bluegreen" />
 
                     </LinearLayout>
 
@@ -296,7 +322,9 @@
                             android:layout_height="match_parent"
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginVertical="5dp"
-                            android:text="Address" />
+                            android:text="Address"
+                            android:textColor="@color/dark_bluegreen"
+                            android:textColorHint="@color/dark_bluegreen" />
 
                         <TextView
                             android:id="@+id/dataAddressTextAbout"
@@ -305,7 +333,8 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginVertical="5dp"
                             android:layout_weight="1"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/dark_bluegreen" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -319,7 +348,9 @@
                             android:layout_height="match_parent"
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginVertical="5dp"
-                            android:text="Phone Number" />
+                            android:text="Phone Number"
+                            android:textColor="@color/dark_bluegreen"
+                            android:textColorHint="@color/dark_bluegreen" />
 
                         <TextView
                             android:id="@+id/dataPhoneTextAbout"
@@ -328,8 +359,17 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginVertical="5dp"
                             android:layout_weight="1"
-                            android:textAlignment="textEnd" />
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/dark_bluegreen" />
                     </LinearLayout>
+
+                    <Button
+                        android:id="@+id/historyAbout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:text="History" />
 
                 </LinearLayout>
 

@@ -1,5 +1,11 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
+/**
+ * The class VPAdapter extends FragmentPagerAdapter
+ * @author Raihan Wijaya
+ * @description Merupakan Class yang digunakan untuk menggunakan VPAdapter
+ */
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
