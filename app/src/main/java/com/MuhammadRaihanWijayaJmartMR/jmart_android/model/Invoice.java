@@ -1,5 +1,13 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.model;
 
+/**
+ * The class Invoice extends Serializable
+ * @author Raihan Wijaya
+ * @description
+ * Untuk menyimpan variabel dari Invoice
+ * Ada juga enum Status dan Rating
+ */
+
 import java.util.Date;
 
 public class Invoice extends Serializable {

@@ -1,5 +1,13 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android.model;
 
+/**
+ * The class Payment extends Invoice
+ * @author Raihan Wijaya
+ * @description
+ * Untuk menyimpan variabel dari Payment
+ * Ada juga inner class Record
+ */
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -13,12 +21,15 @@ public class Payment extends Invoice{
         public String massage;
         public Status status;
 
-
         public Record( Status status, String massage) {
             this.date = java.util.Calendar.getInstance().getTime();
             this.status = status;
             this.massage = massage;
         }
+    }
 
+    @Override
+    public String toString() {
+        return String.valueOf(this.productId);
     }
 }

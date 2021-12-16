@@ -12,6 +12,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
+
+    /**
+     * @description
+     * List dari parameter yang ada di bawah akan di passing menuju backend
+     * disini variable di passing sehingga user dapat membuat akun baru
+     */
+
     private static final String URL =  "http://10.0.2.2:9000/account/register";
     private final Map<String , String> params;
 

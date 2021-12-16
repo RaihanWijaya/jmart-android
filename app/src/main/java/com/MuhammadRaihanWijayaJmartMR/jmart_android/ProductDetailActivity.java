@@ -17,6 +17,13 @@ import android.widget.TextView;
 import com.MuhammadRaihanWijayaJmartMR.jmart_android.model.Product;
 
 public class ProductDetailActivity extends AppCompatActivity {
+
+    /**
+     * @description
+     * Disini variabel di inisiasi dan seperti sebelumnya,
+     * juga dilakukan assign id dari XML ke frontend
+     */
+
     Product productClicked;
 
     @Override
@@ -34,6 +41,13 @@ public class ProductDetailActivity extends AppCompatActivity {
 
         Button buyButton = findViewById(R.id.buyButton);
 
+        /**
+         * @description
+         * Disini variabel di sambungkan dengan ProductFragment.productClicked,
+         * sehingga ketika memilih produk, dapat ditampilkan infonya
+         * Button buy digunakan untuk pindah ke PaymentActivities
+         */
+
         productName.setText(String.valueOf(ProductFragment.productClicked.name));
         productWeight.setText(String.valueOf(ProductFragment.productClicked.weight));
         productCondition.setText(convertConditionUsed(ProductFragment.productClicked.conditionUsed));
@@ -50,6 +64,11 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * @description
+     * convertShipmentPlans dan convertConditionUsed akan melakukan tugas sesuai dengan namanya
+     */
 
     private String convertShipmentPlans(byte shipment){
         switch (shipment) {

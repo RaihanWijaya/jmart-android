@@ -32,8 +32,14 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 public class AboutMeActivity extends AppCompatActivity {
+
+    /**
+     * @description
+     * Pada bagian atas ini terdapat inisiasi variabel dan assign dari UI ke frontend
+     * disini nama, email, dan balance di assign ke milik user dan ditampilkan ke UI
+     */
+
     private static final Gson gson = new Gson();
-    private static Store storeAccount = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +70,13 @@ public class AboutMeActivity extends AppCompatActivity {
         cardRegister.setVisibility(View.GONE);
         cardStore.setVisibility(View.GONE);
 
+        /**
+         * @description
+         * Pada bagian ini, program akan melakukan checking apakah akun user mempunyai store
+         * jika tidak maka program akan menampilkan RegisterStoreButton, jika ada maka program
+         * akan menampilkan info data dari store akun
+         */
+
         if (LoginActivity.getLoggedAccount().store == null){
             registerButton.setVisibility(View.VISIBLE);
         }
@@ -77,7 +90,18 @@ public class AboutMeActivity extends AppCompatActivity {
             cardStore.setVisibility(View.VISIBLE);
         }
 
+        /**
+         * @description
+         * Pada bagian bawah ini, merupakan kumpulan button yang di setOnClickListener
+         * dan setiap button mempunyai fungsi masing masing sesuai dengan namanya
+         */
+
         buttonTopUp.setOnClickListener(new View.OnClickListener() {
+            /**
+             * @description
+             * buttonTopUp digunakan untuk melakukan topUpRequest sehingga topUpInput
+             * akan dipass ke topUpRequest dan akan di poss lagi ke backend
+             */
             @Override
             public void onClick(View v) {
                 Response.Listener<String> listener = new Response.Listener<String>() {
@@ -100,6 +124,11 @@ public class AboutMeActivity extends AppCompatActivity {
         });
 
         registerButton.setOnClickListener (new View.OnClickListener() {
+            /**
+             * @description
+             * registerButton digunakan untuk menampilkan cardRegister dimana berisi
+             * inputan untuk registrasi store
+             */
             @Override
             public void onClick(View v) {
                 registerButton.setVisibility(View.GONE);
@@ -111,10 +140,16 @@ public class AboutMeActivity extends AppCompatActivity {
                         registerButton.setVisibility(View.VISIBLE);
                     }
                 });
+
             }
         });
 
         registerStore.setOnClickListener(new View.OnClickListener() {
+            /**
+             * @description
+             * registerStore adalah button yang digunakan untuk melakukan registrasi dimana,
+             * inputan akan di passing dari frontend ke backend
+             */
             @Override
             public void onClick(View view) {
 
@@ -142,6 +177,10 @@ public class AboutMeActivity extends AppCompatActivity {
 
         Button history = findViewById(R.id.historyAbout);
         history.setOnClickListener(new View.OnClickListener() {
+            /**
+             * @description
+             * history adalah button untuk pindah ke StoreInvoiceActivity
+             */
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AboutMeActivity.this, StoreInvoiceActivity.class);

@@ -26,6 +26,13 @@ import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * @description
+     * Dalam activity ini, digunakan VPAdapter untuk menampilkan fragment
+     * Di inisiasikan juga top menu atau bar bagian atas yang berisi search_button, create_button, history_button dan juga account_button
+     * Setiap button yang ada di top menu mempunyai fungsi masing masing
+     */
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -52,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         addButton.setVisible(LoginActivity.getLoggedAccount().store != null);
         return true;
     }
+
+    /**
+     * @description
+     * search_button digunakan untuk search
+     * add_button digunakan untuk menambahkan produk baru dan pindah ke CreateProductActivity
+     * account_button digunakan untuk melihat info akun dan pindah ke AboutMeActivity
+     * history_button digunakan untuk melihat history pembayaran dan pindah ke PersonalHistory
+     */
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

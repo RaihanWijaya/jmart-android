@@ -32,6 +32,13 @@ import org.json.JSONObject;
 import java.util.Objects;
 
 public class CreateProductActivity extends AppCompatActivity {
+
+    /**
+     * @description
+     * Bagian atas berisi inisiasi variabel dan juga
+     * mengassign id dari XML ke frontend
+     */
+
     private static final Gson gson = new Gson();
     private static  Product product = null;
 
@@ -51,6 +58,13 @@ public class CreateProductActivity extends AppCompatActivity {
         Spinner shipmentPlans = findViewById(R.id.SpinnerShipment);
         Button create = findViewById(R.id.ButtonCreate);
         Button cancel = findViewById(R.id.ButtonCancel);;
+
+        /**
+         * @description
+         * Checkbox newCheck dan usedCheck akan saling mengset value lawannya sebagai false
+         * Button cancel akan melakukan reset input dari semua input box
+         * Button create dilakukan untuk mempassing input dan membuat request ke backend
+         */
 
         newCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -106,6 +120,11 @@ public class CreateProductActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * @description
+     * convertShipmentPlans digunakan untuk mengubah String shipment ke byte
+     */
 
     private String convertShipmentPlans(String shipment){
         switch (shipment) {

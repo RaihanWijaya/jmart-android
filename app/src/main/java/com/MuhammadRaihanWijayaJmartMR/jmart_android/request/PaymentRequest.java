@@ -17,10 +17,24 @@ import java.util.Map;
  */
 
 public class PaymentRequest extends StringRequest {
+
+    /**
+     * @description
+     * List dari parameter yang ada di bawah akan di passing menuju backend
+     * sehingga produk yang dipilih user dapat diproses untuk Payment
+     */
+
     public static final String URL = "http://10.0.2.2:9000/payment/create";
     public final Map<String,String> params;
 
-    public PaymentRequest(String productCount, String shipmentAddress, Response.Listener<String> listener, @Nullable Response.ErrorListener errorListener) {
+    public PaymentRequest
+            (
+                    String productCount,
+                    String shipmentAddress,
+                    Response.Listener<String> listener,
+                    @Nullable Response.ErrorListener errorListener
+            )
+    {
         super(Method.POST, URL, listener, errorListener);
         params = new HashMap<>();
         params.put("buyerId",String.valueOf(LoginActivity.loggedAccount.id));

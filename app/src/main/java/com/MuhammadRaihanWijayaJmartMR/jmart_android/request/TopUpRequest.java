@@ -14,6 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TopUpRequest extends StringRequest {
+
+    /**
+     * @description
+     * List dari parameter yang ada di bawah akan di passing menuju backend
+     * agar user dapat melakukan topUp ke balance akunnya
+     */
+
     private static final String URL =  "http://10.0.2.2:9000/account/" + LoginActivity.getLoggedAccount().id + "/topUp";
     private final Map<String , String> params;
 

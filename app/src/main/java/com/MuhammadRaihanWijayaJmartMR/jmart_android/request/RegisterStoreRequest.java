@@ -14,6 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterStoreRequest extends StringRequest {
+
+    /**
+     * @description
+     * List dari parameter yang ada di bawah akan di passing menuju backend
+     * agar user dapat melakukan registrasi pada store baru
+     */
+
     private static final String URL =  "http://10.0.2.2:9000/account/" + LoginActivity.getLoggedAccount().id + "/registerStore";
     private final Map<String , String> params;
 

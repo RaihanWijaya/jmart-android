@@ -35,6 +35,12 @@ import java.util.ArrayList;
 
 public class FilterFragment extends Fragment {
 
+    /**
+     * @description
+     * Bagian atas disini merupakan inisiasi variabel dan juga
+     * mengassign id dari XML ke frontend
+     */
+
     private static final Gson gson = new Gson();
     public static ArrayList<Product> productsList = new ArrayList<>();
     public static int status = 0;
@@ -50,6 +56,13 @@ public class FilterFragment extends Fragment {
         Spinner category = productView.findViewById(R.id.categorySpinnerFilter);
         Button apply = productView.findViewById(R.id.ApplyFilter);
         Button clear = productView.findViewById(R.id.ClearFilter);
+
+        /**
+         * @description
+         * Checkbox newCheck dan usedCheck akan saling mengset value lawannya sebagai false
+         * Button clear digunakan untuk mengreset list produk ke default
+         * Button apply akan memfilter list produk di FragmentProduct
+         */
 
         newCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

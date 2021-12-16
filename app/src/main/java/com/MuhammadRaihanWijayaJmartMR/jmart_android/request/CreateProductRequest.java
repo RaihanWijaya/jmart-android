@@ -17,6 +17,12 @@ import java.util.Map;
 
 public class CreateProductRequest extends StringRequest {
 
+    /**
+     * @description
+     * List dari parameter yang ada di bawah akan di passing menuju backend
+     * sehingga user yang memiliki store dapat menambahkan produknya
+     */
+
     public static final String URL = "http://10.0.2.2:9000/product/create";
     public final Map<String,String> params;
 

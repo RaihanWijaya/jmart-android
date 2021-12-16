@@ -1,11 +1,5 @@
 package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
-/**
- * The class PaymentActivity extends AppCompatActivity
- * @author Raihan Wijaya
- * @description Disini activity yang digunakan untuk melakukan pembayaran, nanti akan dihubungkan ke backend dengan PaymentRequest
- */
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -25,7 +19,19 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * The class PaymentActivity extends AppCompatActivity
+ * @author Raihan Wijaya
+ * @description Disini activity yang digunakan untuk melakukan pembayaran, nanti akan dihubungkan ke backend dengan PaymentRequest
+ */
+
 public class PaymentActivity extends AppCompatActivity {
+
+    /**
+     * @description
+     * Bagian atas berisi inisiasi variabel dan
+     * assign id dari XML ke frontend
+     */
 
     private static final Gson gson = new Gson();
     private static Payment paid = null;
@@ -34,13 +40,19 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        TextView name = (TextView) findViewById(R.id.NamePayment);
-        TextView shipmentPlans = (TextView) findViewById(R.id.ShipmentPayment);
-        TextView price = (TextView) findViewById(R.id.PricePayment);
-        EditText productCount = (EditText) findViewById(R.id.payment_product_count);
-        EditText address = (EditText) findViewById(R.id.address_payment);
-        Button order = (Button) findViewById(R.id.OrderButton);
+        TextView name = findViewById(R.id.NamePayment);
+        TextView shipmentPlans = findViewById(R.id.ShipmentPayment);
+        TextView price = findViewById(R.id.PricePayment);
+        EditText productCount = findViewById(R.id.payment_product_count);
+        EditText address = findViewById(R.id.address_payment);
+        Button order = findViewById(R.id.OrderButton);
         name.setText(ProductFragment.productClicked.name);
+
+        /**
+         * Switch case shipmentPlans
+         * @description
+         * Untuk mengubah shipmentPlans (byte) menuju shipmentPlans (String)
+         */
 
         switch (ProductFragment.productClicked.shipmentPlans) {
             case 0:
@@ -62,6 +74,12 @@ public class PaymentActivity extends AppCompatActivity {
 
         price.setText(String.valueOf(ProductFragment.productClicked.price));
 
+        /**
+         * The order.setOnClickListener
+         * @description
+         * Disini button order di berfungsi untuk membuat payment request
+         */
+
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,6 +92,7 @@ public class PaymentActivity extends AppCompatActivity {
                                 paid = gson.fromJson(object.toString(),Payment.class);
                                 System.out.println(paid);
                                 Intent intent = new Intent(PaymentActivity.this,MainActivity.class);
+                                LoginActivity.loggedAccount.balance -= (ProductFragment.productClicked.price - (ProductFragment.productClicked.price*(ProductFragment.productClicked.discount/100)))*Double.parseDouble(productCount.getText().toString());
                                 startActivity(intent);
                             }
                         }catch (JSONException e){
@@ -88,3 +107,4 @@ public class PaymentActivity extends AppCompatActivity {
         });
     }
 }
+

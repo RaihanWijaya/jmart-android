@@ -7,7 +7,6 @@ package com.MuhammadRaihanWijayaJmartMR.jmart_android;
  */
 
 import android.content.Intent;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -38,6 +37,12 @@ import java.util.ArrayList;
 
 public class ProductFragment extends Fragment {
 
+    /**
+     * @description
+     * Diatas merupakan inisiasi variable dan
+     * assign id dari XML ke frontend
+     */
+
     private static final Gson gson = new Gson();
     public static ArrayList<Product> productsList = new ArrayList<>();
     static int pageSize = 20;
@@ -51,6 +56,13 @@ public class ProductFragment extends Fragment {
         Button nextButton = productView.findViewById(R.id.ButtonNext);
         Button prevButton = productView.findViewById(R.id.ButtonPrev);
         Button goButton = productView.findViewById(R.id.ButtonGo);
+
+        /**
+         * @description
+         * inputPage digunakan sebagai input dari page
+         * goButton digunakan untuk mempassing inputPage ke backend
+         * nextButton dan prevButton akan melakukan sesuai tugasnya
+         */
 
         inputPage.setText(String.valueOf(page + 1), TextView.BufferType.EDITABLE);
 

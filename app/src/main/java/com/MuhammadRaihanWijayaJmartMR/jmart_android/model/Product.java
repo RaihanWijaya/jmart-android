@@ -16,6 +16,11 @@ public class Product extends Serializable {
     public byte shipmentPlans;
     public int weight;
 
+    /**
+     * Method public String toString()
+     * @description untuk mengembalikan value dari nama
+     */
+
     @Override
     public String toString() {
         return this.name;

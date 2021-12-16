@@ -27,6 +27,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
+
+    /**
+     * @description
+     * Bagian atas adalah inisiasi variabel, mengassign XML ke frontend
+     * Button login digunakan untuk membuat request baru sehingga dapat di passing ke backend
+     * TextView register dapat di pencet dan digunakan untuk pindah ke RegisterActivity
+     */
+
     private static final Gson gson = new Gson();
     public static Account loggedAccount;
 
@@ -42,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText textemail = findViewById(R.id.emailLogin);
         EditText textpassword = findViewById(R.id.passwordLogin);
         Button buttonlogin = findViewById(R.id.buttonLogin);
+
         buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 requestQueue.add(loginRequest);
             }
         });
+
         TextView register = findViewById(R.id.textToRegister);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
