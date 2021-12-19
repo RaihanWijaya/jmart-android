@@ -37,18 +37,17 @@ import java.util.ArrayList;
 public class PersonalHistory extends AppCompatActivity {
 
     /**
-     * @description
-     * Disini variabel di inisiasi dan onCreate, akan ditampilkan
+     * @description Disini variabel di inisiasi dan onCreate, akan ditampilkan
      * list dari history ke ListPersonalHistory
      */
 
     public static ArrayList<Payment> paymentList = new ArrayList<>();
     public static ArrayList<Product> products = new ArrayList<>();
+    public static Product productClickedHistory = null;
     private static final Gson gson = new Gson();
     static int pageSize = 20;
     static int page = 0;
     private static int sentinel = 0;
-    public static Payment paymentClicked = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class PersonalHistory extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(PersonalHistory.this,"Menu!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PersonalHistory.this, "Menu!", Toast.LENGTH_SHORT).show();
                 products.clear();
                 sentinel = 0;
                 Intent intent = new Intent(PersonalHistory.this, MainActivity.class);
@@ -71,15 +70,14 @@ public class PersonalHistory extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(sentinel == 0){
-                    Toast.makeText(PersonalHistory.this,"Refresh!", Toast.LENGTH_SHORT).show();
+                if (sentinel == 0) {
+                    Toast.makeText(PersonalHistory.this, "Refresh!", Toast.LENGTH_SHORT).show();
                     PersonalHistory.this.finish();
-                    PersonalHistory.this.overridePendingTransition(0,0);
+                    PersonalHistory.this.overridePendingTransition(0, 0);
                     PersonalHistory.this.startActivity(PersonalHistory.this.getIntent());
                     sentinel += 1;
-                }
-                else if(sentinel > 0){
-                    Toast.makeText(PersonalHistory.this,"Already Refreshed", Toast.LENGTH_SHORT).show();
+                } else if (sentinel > 0) {
+                    Toast.makeText(PersonalHistory.this, "Already Refreshed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -90,8 +88,7 @@ public class PersonalHistory extends AppCompatActivity {
                 try {
                     JSONArray object = new JSONArray(response);
                     if (object != null) {
-                        paymentList = gson.fromJson(object.toString(), new TypeToken<ArrayList<Payment>>() {
-                        }.getType());
+                        paymentList = gson.fromJson(object.toString(), new TypeToken<ArrayList<Payment>>() {}.getType());
                         convertPayment();
                         ArrayAdapter<Product> listViewAdapter = new ArrayAdapter<Product>(
                                 PersonalHistory.this,
@@ -99,17 +96,16 @@ public class PersonalHistory extends AppCompatActivity {
                                 products
                         );
                         ListView lv = (ListView) findViewById(R.id.ListPersonalHistory);
-
                         lv.setAdapter(listViewAdapter);
 
-                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                paymentClicked = (Payment) lv.getItemAtPosition(i);
-                                Intent intent = new Intent(PersonalHistory.this, PaymentDetailActivity.class);
-                                startActivity(intent);
-                            }
-                        });
+//                        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                            @Override
+//                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                                productClickedHistory = (Product) lv.getItemAtPosition(i);
+//                                Intent intent = new Intent(PersonalHistory.this, ProductDetailActivity.class);
+//                                startActivity(intent);
+//                            }
+//                        });
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -122,14 +118,14 @@ public class PersonalHistory extends AppCompatActivity {
 
     private void convertPayment() {
         for (Payment each : paymentList) {
-            if(each.buyerId == LoginActivity.loggedAccount.id){
+            if (each.buyerId == LoginActivity.loggedAccount.id) {
                 Response.Listener<String> listenerConvert = new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         try {
                             JSONObject objectConvert = new JSONObject(response);
                             if (objectConvert != null) {
-                                Product temp = gson.fromJson(objectConvert.toString(),Product.class);
+                                Product temp = gson.fromJson(objectConvert.toString(), Product.class);
                                 products.add(temp);
                             }
                         } catch (JSONException e) {

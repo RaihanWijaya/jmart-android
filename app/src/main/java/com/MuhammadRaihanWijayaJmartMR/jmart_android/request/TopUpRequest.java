@@ -24,6 +24,12 @@ public class TopUpRequest extends StringRequest {
     private static final String URL =  "http://10.0.2.2:9000/account/" + LoginActivity.getLoggedAccount().id + "/topUp";
     private final Map<String , String> params;
 
+    /**
+     * @param id
+     * @param balance
+     * @param listener
+     * @param errorListener
+     */
     public TopUpRequest
             (
                     int id,

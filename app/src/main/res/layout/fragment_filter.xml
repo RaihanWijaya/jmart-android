@@ -32,6 +32,7 @@
 
         <EditText
             android:id="@+id/nameInputFilter"
+            android:background="@drawable/edittext_rounded_corners"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="5dp"
@@ -77,6 +78,7 @@
 
             <EditText
                 android:id="@+id/lowestInputFilter"
+                android:background="@drawable/edittext_rounded_corners"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -101,6 +103,7 @@
 
             <EditText
                 android:id="@+id/highestInputFilter"
+                android:background="@drawable/edittext_rounded_corners"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
@@ -137,6 +140,7 @@
 
                 <CheckBox
                     android:id="@+id/newCheckFilter"
+                    android:background="@drawable/edittext_rounded_corners"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
@@ -147,6 +151,7 @@
 
                 <CheckBox
                     android:id="@+id/usedCheckFilter"
+                    android:background="@drawable/edittext_rounded_corners"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"

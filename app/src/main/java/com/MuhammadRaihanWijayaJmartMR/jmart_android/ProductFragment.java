@@ -45,6 +45,7 @@ public class ProductFragment extends Fragment {
 
     private static final Gson gson = new Gson();
     public static ArrayList<Product> productsList = new ArrayList<>();
+    public static ArrayAdapter<Product> listViewAdapter;
     static int pageSize = 20;
     static int page = 0;
     public static Product productClicked = null;
@@ -115,7 +116,7 @@ public class ProductFragment extends Fragment {
                         }
 
                         System.out.println(productsList);
-                        ArrayAdapter<Product> listViewAdapter = new ArrayAdapter<Product>(
+                        listViewAdapter = new ArrayAdapter<Product>(
                                 getActivity(),
                                 android.R.layout.simple_list_item_1,
                                 productsList
@@ -124,6 +125,7 @@ public class ProductFragment extends Fragment {
                         ListView lv = (ListView) productView.findViewById(R.id.ProductListView);
 
                         lv.setAdapter(listViewAdapter);
+
                         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

@@ -24,6 +24,12 @@ public class LoginRequest extends StringRequest {
     private static final String URL =  "http://10.0.2.2:9000/account/login";
     private final Map<String, String> params;
 
+    /**
+     * @param email
+     * @param password
+     * @param listener
+     * @param errorListener
+     */
     public LoginRequest
             (
                     String email,
@@ -37,7 +43,6 @@ public class LoginRequest extends StringRequest {
         params.put("email", email);
         params.put("password", password);
     }
-
     public Map<String, String> getParams(){
         return params;
     }

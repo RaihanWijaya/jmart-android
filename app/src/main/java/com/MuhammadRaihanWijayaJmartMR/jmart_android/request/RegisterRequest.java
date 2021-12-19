@@ -22,6 +22,13 @@ public class RegisterRequest extends StringRequest {
     private static final String URL =  "http://10.0.2.2:9000/account/register";
     private final Map<String , String> params;
 
+    /**
+     * @param name
+     * @param email
+     * @param password
+     * @param listener
+     * @param errorListener
+     */
     public RegisterRequest
             (
                     String name,

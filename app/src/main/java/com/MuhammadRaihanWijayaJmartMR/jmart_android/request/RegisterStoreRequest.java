@@ -24,6 +24,14 @@ public class RegisterStoreRequest extends StringRequest {
     private static final String URL =  "http://10.0.2.2:9000/account/" + LoginActivity.getLoggedAccount().id + "/registerStore";
     private final Map<String , String> params;
 
+    /**
+     * @param id
+     * @param name
+     * @param address
+     * @param phoneNumber
+     * @param listener
+     * @param errorListener
+     */
     public RegisterStoreRequest
             (
                     int id,

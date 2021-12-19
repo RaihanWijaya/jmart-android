@@ -48,12 +48,13 @@ public class PaymentActivity extends AppCompatActivity {
         Button order = findViewById(R.id.OrderButton);
         name.setText(ProductFragment.productClicked.name);
 
+        price.setText(String.valueOf(ProductFragment.productClicked.price));
+
         /**
          * Switch case shipmentPlans
          * @description
          * Untuk mengubah shipmentPlans (byte) menuju shipmentPlans (String)
          */
-
         switch (ProductFragment.productClicked.shipmentPlans) {
             case 0:
                 shipmentPlans.setText("INSTANT");
@@ -71,8 +72,6 @@ public class PaymentActivity extends AppCompatActivity {
                 shipmentPlans.setText("KARGO");
                 break;
         }
-
-        price.setText(String.valueOf(ProductFragment.productClicked.price));
 
         /**
          * The order.setOnClickListener

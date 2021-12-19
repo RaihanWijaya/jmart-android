@@ -18,7 +18,7 @@
             android:name=".PaymentDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".StoreInvoiceActivity"
+            android:name=".StoreHistory"
             android:exported="false" />
         <activity
             android:name=".PersonalHistory"

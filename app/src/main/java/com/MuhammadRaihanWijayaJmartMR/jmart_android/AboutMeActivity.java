@@ -12,7 +12,6 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,8 +27,6 @@ import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Objects;
 
 public class AboutMeActivity extends AppCompatActivity {
 
@@ -62,6 +59,7 @@ public class AboutMeActivity extends AppCompatActivity {
         Button registerButton = findViewById(R.id.registerStoreButtonAbout);
         Button registerStore = findViewById(R.id.buttonRegisterStore);
         Button cancelRegister = findViewById(R.id.cancelRegisterStore);
+        Button buttonLogOut = findViewById(R.id.logOutButton);
 
         CardView cardRegister = findViewById(R.id.cardRegisterAbout);
         CardView cardStore = findViewById(R.id.cardStoreAbout);
@@ -123,6 +121,19 @@ public class AboutMeActivity extends AppCompatActivity {
             }
         });
 
+        buttonLogOut.setOnClickListener(new View.OnClickListener() {
+            /**
+             * @description
+             * buttonTopUp digunakan untuk melakukan log out dari logged account
+             * */
+            @Override
+            public void onClick(View v) {
+                Intent logOut = new Intent(AboutMeActivity.this, LoginActivity.class);
+                finish();
+                startActivity(logOut);
+            }
+        });
+
         registerButton.setOnClickListener (new View.OnClickListener() {
             /**
              * @description
@@ -152,26 +163,27 @@ public class AboutMeActivity extends AppCompatActivity {
              */
             @Override
             public void onClick(View view) {
-
-                Response.Listener<String> listener = new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-                            JSONObject object = new JSONObject(response);
-                            LoginActivity.loggedAccount.store = gson.fromJson(object.toString(),Store.class);
-                            System.out.println(LoginActivity.loggedAccount.store);
-                            Toast.makeText(AboutMeActivity.this, "Create Store Success!", Toast.LENGTH_SHORT).show();
-                            finish();
-                            startActivity(getIntent());
-                        }catch (JSONException e){
-                            Toast.makeText(AboutMeActivity.this, "Create Store Failed!", Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
+                if(!String.valueOf(storeName).isEmpty() && !String.valueOf(storeAddress).isEmpty() && !String.valueOf(storePhone).isEmpty()){
+                    Response.Listener<String> listener = new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            try{
+                                JSONObject object = new JSONObject(response);
+                                LoginActivity.loggedAccount.store = gson.fromJson(object.toString(),Store.class);
+                                System.out.println(LoginActivity.loggedAccount.store);
+                                Toast.makeText(AboutMeActivity.this, "Create Store Success!", Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(getIntent());
+                            }catch (JSONException e){
+                                Toast.makeText(AboutMeActivity.this, "Create Store Failed!", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                            }
                         }
-                    }
-                };
-                RegisterStoreRequest request = new RegisterStoreRequest(LoginActivity.getLoggedAccount().id,storeName.getText().toString(),storeAddress.getText().toString(),storePhone.getText().toString(),listener,null);
-                RequestQueue requestQueue = Volley.newRequestQueue(AboutMeActivity.this);
-                requestQueue.add(request);
+                    };
+                    RegisterStoreRequest request = new RegisterStoreRequest(LoginActivity.getLoggedAccount().id,storeName.getText().toString(),storeAddress.getText().toString(),storePhone.getText().toString(),listener,null);
+                    RequestQueue requestQueue = Volley.newRequestQueue(AboutMeActivity.this);
+                    requestQueue.add(request);
+                }
             }
         });
 
@@ -183,7 +195,7 @@ public class AboutMeActivity extends AppCompatActivity {
              */
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AboutMeActivity.this, StoreInvoiceActivity.class);
+                Intent intent = new Intent(AboutMeActivity.this, StoreHistory.class);
                 startActivity(intent);
             }
         });

@@ -8,21 +8,31 @@ package com.MuhammadRaihanWijayaJmartMR.jmart_android;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
+import android.view.ViewTreeObserver;
+import android.widget.ListView;
+import androidx.appcompat.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.MuhammadRaihanWijayaJmartMR.jmart_android.model.Account;
+import com.MuhammadRaihanWijayaJmartMR.jmart_android.model.Product;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar();
 
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewpager);
@@ -55,8 +66,28 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.top_menu, menu);
+
         MenuItem addButton = menu.findItem(R.id.add_button);
         addButton.setVisible(LoginActivity.getLoggedAccount().store != null);
+
+        MenuItem search = menu.findItem(R.id.search_button);
+        SearchView searchView = (SearchView) search.getActionView();
+        searchView.setQueryHint("Pencarian");
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                ProductFragment.listViewAdapter.getFilter().filter(newText);
+
+                return false;
+            }
+        });
+
         return true;
     }
 

@@ -27,6 +27,12 @@ public class PaymentRequest extends StringRequest {
     public static final String URL = "http://10.0.2.2:9000/payment/create";
     public final Map<String,String> params;
 
+    /**
+     * @param productCount
+     * @param shipmentAddress
+     * @param listener
+     * @param errorListener
+     */
     public PaymentRequest
             (
                     String productCount,

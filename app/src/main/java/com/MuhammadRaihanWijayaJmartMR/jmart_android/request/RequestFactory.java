@@ -21,6 +21,13 @@ public class RequestFactory {
     private static final String URL_FORMAT_PAGE = "http://10.0.2.2:9000/%s/page?page=%s&pageSize=%s";
     private static final String URL_FORMAT_PRODUCT = "http://10.0.2.2:9000/product/getFiltered?page=%s&pageSize=%s&search=%s&minPrice=%s&maxPrice=%s&category=%s&conditionUsed=%s";
 
+    /**
+     * @param parentURL
+     * @param id
+     * @param listener
+     * @param errorListener
+     * @return
+     */
     public static StringRequest getById
             (
                     String parentURL,

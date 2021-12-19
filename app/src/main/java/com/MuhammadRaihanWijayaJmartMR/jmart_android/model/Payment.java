@@ -28,6 +28,22 @@ public class Payment extends Invoice{
         }
     }
 
+    public String getBuyerId() {
+        return String.valueOf(buyerId);
+    }
+
+    public String getProductId() {
+        return String.valueOf(productId);
+    }
+
+    public String getProductCount() {
+        return String.valueOf(productCount);
+    }
+
+    public ArrayList<Record> getHistory() {
+        return history;
+    }
+
     @Override
     public String toString() {
         return String.valueOf(this.productId);

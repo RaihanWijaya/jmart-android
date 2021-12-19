@@ -44,6 +44,7 @@
 
                 <EditText
                     android:id="@+id/InputNameCreate"
+                    android:background="@drawable/edittext_rounded_corners"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
@@ -58,6 +59,7 @@
 
                 <EditText
                     android:id="@+id/InputWeightCreate"
+                    android:background="@drawable/edittext_rounded_corners"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
@@ -71,13 +73,14 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/InputPriceCreate"
+                    android:id="@+id/InputDiscountCreate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:layout_marginVertical="5dp"
+                    android:background="@drawable/edittext_rounded_corners"
                     android:ems="10"
-                    android:hint="Price"
+                    android:hint="Discount"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColor="@color/dark_bluegreen"
@@ -85,13 +88,14 @@
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/InputDiscountCreate"
+                    android:id="@+id/InputPriceCreate"
+                    android:background="@drawable/edittext_rounded_corners"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="5dp"
                     android:layout_marginVertical="5dp"
                     android:ems="10"
-                    android:hint="Discount"
+                    android:hint="Price"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColor="@color/dark_bluegreen"
@@ -105,24 +109,25 @@
 
                     <TextView
                         android:id="@+id/TitleConditionCreate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="187dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="5dp"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
+                        android:layout_marginVertical="20dp"
                         android:text="Condition"
+                        android:textAlignment="viewStart"
                         android:textColor="@color/dark_bluegreen"
                         android:textSize="16sp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_rounded_corners"
                         android:layout_marginHorizontal="5dp"
                         android:layout_marginVertical="5dp">
 
                         <CheckBox
                             android:id="@+id/NewRadiobutton"
-                            android:layout_width="wrap_content"
+                            android:layout_width="87dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="New"
@@ -131,7 +136,7 @@
 
                         <CheckBox
                             android:id="@+id/UsedRadiobutton"
-                            android:layout_width="wrap_content"
+                            android:layout_width="86dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Used"
